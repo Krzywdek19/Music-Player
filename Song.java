@@ -15,6 +15,13 @@ public class Song {
         this.path = path;
     }
 
+    public Song(String path, int lengthInSec){
+        this.path = path;
+        this.lengthInSec = lengthInSec;
+        this.title = null;
+        this.artist = null;
+        this.album = null;
+    }
     public String getTitle() {
         return title;
     }
