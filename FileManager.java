@@ -3,7 +3,8 @@ package com.krzywda;
 import java.io.*;
 
 public class FileManager {
-    private String filePath;
+    private final String filePath;
+
 
     public FileManager(String filePath){
         this.filePath = filePath;
@@ -23,16 +24,31 @@ public class FileManager {
     }
 
     public void addPathToFile(File file, String path){
-        File mp3File = new File(path);
-        if(mp3File.exists() && mp3File.getPath().endsWith(".mp3")) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
-                writer.newLine();
-                writer.write(path);
-            } catch (Exception e) {
-                System.out.println(e);
+        if(!fileContain(file, path)){
+            File mp3File = new File(path);
+            if(mp3File.exists() && mp3File.getPath().endsWith(".mp3")) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                    if(file.length() > 0){
+                        writer.newLine();
+                    }
+                    writer.write(path);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
-        }else {
-            System.out.println(mp3File.getPath());
         }
+    }
+
+    static boolean fileContain(File file, String content){
+        try(BufferedReader reader = new BufferedReader(new FileReader(file))){
+            while(reader.ready()){
+                if(reader.readLine().equals(content)){
+                    return true;
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return false;
     }
 }

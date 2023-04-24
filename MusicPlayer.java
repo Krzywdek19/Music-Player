@@ -9,7 +9,7 @@ public interface MusicPlayer {
     void pause(); //stop play actual song and remember postion
     void previous(); //return to previous song
     void setVolume(int volume); //set volume
-    void setPlaylist(List<Song> playlist); //set playlist which operation will be performed
+    void setPlaylist(Playlist playlist); //set playlist which operation will be performed
     void addToPlayList(Song song); //add song to setted playlist
     void removeFromPlaylist(Song song); //remove song from setted playlist
 }

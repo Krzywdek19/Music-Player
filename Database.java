@@ -14,6 +14,7 @@ public class Database {
     FileManager fileManager = new FileManager("./src/main/java/com/krzywda/paths.txt");
 
     public Database(){
+        getFilesFromMusicFolder();
         transferDataToList();
     }
 
@@ -48,6 +49,14 @@ public class Database {
             }
         }
     }
+
+    public void getFilesFromMusicFolder(){
+        String homeFolderParh = System.getProperty("user.home");
+        File musicFolder = new File(homeFolderParh + File.separator + "music");
+        System.out.println(musicFolder.exists());
+        iterateFileList(Arrays.stream(Objects.requireNonNull(musicFolder.listFiles())).toList());
+    }
+
 
     public void searchDriveForMp3(){
         File file = new File("C:/");
