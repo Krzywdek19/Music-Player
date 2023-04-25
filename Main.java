@@ -17,21 +17,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while(flag){
-            System.out.println("Podaj numer 1 - graj; 2 - pauza; 3 - wylacz");
+            System.out.println("Podaj numer 1 - graj; 2 - pauza; 3 - nastepna piosenka; 4 - poprzednia piosenka; 5 - pauza; 6 - wylacz");
             int number = sc.nextInt();
-            switch (number){
-                case 1:
+            switch (number) {
+                case 1 -> {
                     player.play();
                     System.out.println("dziaala");
-                    break;
-                case 2:
-                    player.stop();
-                    break;
-                case 3:
-                    flag = false;
-                    break;
-                default:
-                    break;
+                }
+                case 2 -> player.stop();
+                case 3 -> player.skip();
+                case 4 -> player.previous();
+                case 5 -> player.pause();
+                case 6 -> flag = false;
+                default -> {
+                }
             }
         }
     }
