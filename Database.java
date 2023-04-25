@@ -10,8 +10,12 @@ import java.util.*;
 
 
 public class Database {
-    ArrayList<Song> songs = new ArrayList<>(100);
-    FileManager fileManager = new FileManager("./src/main/java/com/krzywda/paths.txt");
+    private ArrayList<Song> songs = new ArrayList<>(100);
+    private FileManager fileManager = new FileManager("./src/main/java/com/krzywda/paths.txt");
+
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
 
     public Database(){
         getFilesFromMusicFolder();
