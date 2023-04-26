@@ -12,25 +12,43 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException, JavaLayerException {
-        Player player = new Player();
-        boolean flag = true;
-        Scanner sc = new Scanner(System.in);
 
-        while(flag){
-            System.out.println("Podaj numer 1 - graj; 2 - pauza; 3 - nastepna piosenka; 4 - poprzednia piosenka; 5 - pauza; 6 - wylacz");
-            int number = sc.nextInt();
-            switch (number) {
-                case 1 -> {
-                    player.play();
-                    System.out.println("dziaala");
-                }
-                case 2 -> player.stop();
-                case 3 -> player.skip();
-                case 4 -> player.previous();
-                case 5 -> player.pause();
-                case 6 -> flag = false;
-                default -> {
-                }
+        SoundPlayer soundPlayer = new SoundPlayer();
+        int index = 0;
+        Scanner sc = new Scanner(System.in);
+        boolean flag = true;
+        while (flag){
+            System.out.println("1 - graj piosenke");
+            System.out.println("2 - przestań grać piosenkę");
+            System.out.println("3 - zatrzymaj odtwarzanie piosenki");
+            System.out.println("4 - nastepna piosenka");
+            System.out.println("5 - poprzednia piosenka");
+            System.out.println("6 - koniec programu");
+            System.out.println("Co chcesz zrobić: ");
+            index = sc.nextInt();
+
+            switch (index){
+                case 1:
+                    soundPlayer.play();
+                    break;
+                case 2:
+                    soundPlayer.stop();
+                    break;
+                case 3:
+                    soundPlayer.pause();
+                    break;
+                case 4:
+                    soundPlayer.skip();
+                    break;
+                case 5:
+                    soundPlayer.previous();
+                    break;
+                case 6:
+                    flag = false;
+                    soundPlayer.stop();
+                    break;
+                default:
+                    System.out.println("podales zly numer");
             }
         }
     }

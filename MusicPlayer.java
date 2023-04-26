@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface MusicPlayer {
-    void play() throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException, JavaLayerException; //play actual song
+    boolean play() throws UnsupportedAudioFileException, IOException, LineUnavailableException, InterruptedException, JavaLayerException; //play actual song
     void stop() throws JavaLayerException, FileNotFoundException; //stop play actual sonng
     void skip() throws IOException, JavaLayerException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException; //skip actual song and go to next
     void pause() throws UnsupportedAudioFileException, LineUnavailableException, IOException, InterruptedException, JavaLayerException; //stop play actual song and remember postion
